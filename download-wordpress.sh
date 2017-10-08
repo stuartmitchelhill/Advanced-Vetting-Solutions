@@ -1,0 +1,1 @@
+curl -o latest.tar.gz https://wordpress.org/latest.tar.gz && tar xfz latest.tar.gz && rm -rf wordpress/wp-content/ && mv wordpress/* ./ && rm -rf wordpress/ && rm -rf latest.tar.gz
