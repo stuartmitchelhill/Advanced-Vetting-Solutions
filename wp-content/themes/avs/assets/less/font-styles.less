@@ -1,0 +1,278 @@
+@charset "UTF-8";
+
+/****************
+     Fonts
+*****************/
+.HelveticaNeue(@weight:400,@style:normal) {
+  .font-mixin(~"'Helvetica Neue','Helvetica',Arial,sans-serif", @weight, @style);
+}
+
+.defaultFont(@weight:400,@style:normal) {
+  .HelveticaNeue(@weight, @style);
+}
+
+html, body {
+  .defaultFont();
+  .smooth();
+}
+
+/****************
+    Text Styles
+*****************/
+.defaultH1() {
+  font-size: 28px;
+  color: @defaultH1;
+  margin: 0;
+  .defaultFont(700);
+}
+
+.defaultH2(){
+  font-size: 24px;
+  color: @defaultH2;
+  margin: 0;
+  .defaultFont(700);
+
+  &.accent-top {
+    position: relative;
+    padding-top: 25px;
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: @main_colour;
+    }
+  }
+
+  &.accent-bottom {
+    position: relative;
+    padding-bottom: 25px;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: @main_colour;
+    }
+  }
+}
+
+.defaultH3() {
+  font-size: 20px;
+  color: @defaultH3;
+  margin: 0;
+  .defaultFont(500)
+}
+
+.h3 {
+  display: block;
+  font-size: 20px;
+  color: @defaultH3;
+  margin: 0;
+  .defaultFont(500)
+}
+
+.defaultH4() {
+  font-size: 18px;
+  color: @defaultH4;
+  margin: 0;
+  .defaultFont(500)
+}
+
+.defaultP() {
+  font-size: 16px;
+  line-height: 155%;
+  margin: 0 0 25px;
+  color: @defaultP;
+  .defaultFont();
+
+  strong {
+    font-weight: 700;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  &.intro {
+    font-size: 22px;
+    line-height: 135%;
+    color: @intro_colour;
+  }
+}
+
+blockquote {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+
+  &:before {
+    content: '“';
+    display: block;
+    font-size: 20px;
+    color: @main_colour;
+    position: absolute;
+    left: 10px;
+  }
+
+  p {
+    font-style: italic;
+    padding: 0 25px;
+  }
+}
+
+.defaultA() {
+  color: @default_a_colour;
+  text-decoration: none;
+  transition: 0.2s;
+
+  &:hover {
+    color: @default_a_hover_colour;
+    text-decoration: none;
+  }
+  
+  &:active {
+    color: @default_a_active_colour;
+  }
+
+  &.arrow-link {
+    position: relative;
+    padding-right: 15px !important;
+    &:before {
+      content: '\e802';
+      font-family: 'fontello';
+      display: block;
+      font-size: 12px;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  outline: none;
+  overflow: visible;
+  cursor: pointer;
+  line-height: 100%;
+  padding: 8px 14px;
+  font-size: 14px;
+  text-align: center;
+  border: 2px solid @main_colour;
+  transition: 0.2s;
+}
+
+.btn-primary {
+  background: @primary_btn_bg;
+  color: @primary_btn_colour;
+
+  &:hover {
+    color: @primary_btn_colour_hover;
+    background: @primary_btn_bg_hover;
+    border-color: @primary_btn_bg_hover;
+  }
+
+  &:active {
+    color: @primary_btn_colour_active;
+    background: @primary_btn_bg_active;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+  }
+}
+
+.btn-secondary {
+  background: @secondary_btn_bg;
+  color: @secondary_btn_colour;
+
+  &:hover {
+    color: @secondary_btn_colour_hover;
+    background: @secondary_btn_bg_hover;
+    border-color: @secondary_btn_bg_hover;
+  }
+
+  &:active {
+    color: @secondary_btn_colour_active;
+    background: @secondary_btn_bg_active;
+    border-color: @secondary_btn_bg_active;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+  }
+}
+
+.defaultUl {
+  padding-left: 20px;
+  list-style: disc;
+  margin: 0;
+  .defaultLi();
+  li {
+
+  }
+}
+
+.defaultLi() {
+  li {
+    .defaultP();
+    margin: 0;
+  }
+}
+
+.defaultOl {
+  list-style: decimal;
+  padding-left: 20px;
+  margin: 0;
+  .defaultLi();
+  li {
+
+  }
+}
+
+.defaultTable() {
+  width: 100%;
+  margin: 0 0 20px;
+}
+
+.defaultTextStyles() {
+  h1 {
+    .defaultH1();
+  }
+  h2 {
+    .defaultH2();
+  }
+  h3 {
+    .defaultH3();
+  }
+  h4 {
+    .defaultH4();
+  }
+  p {
+    .defaultP();
+  }
+  a {
+    .defaultA();
+  }
+  ul {
+    .defaultUl();
+  }
+  ol {
+    .defaultOl();
+  }
+  table {
+    .defaultTable()
+  }
+}
+
+.defaultTextStyles();

@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+/*************
+    Mixins
+**************/
+/********************
+    Fixes/Resets
+*********************/
+.clean-list-style {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        margin: 0;
+        padding: 0;
+        background: none;
+        line-height: 120%;
+    }
+}
+
+.clean-list() {
+    &:extend(.clean-list-style all);
+
+}
+
+.smooth-style {
+    -webkit-font-smoothing: antialiased;
+}
+
+.smooth() {
+    &:extend(.smooth-style);
+}
+
+/*****************
+      Forms
+******************/
+.placeholder(@arguments) {
+
+    &::-webkit-input-placeholder {
+        @arguments();
+    }
+    &:-moz-placeholder {
+        @arguments();
+    }
+    &::-moz-placeholder {
+        @arguments();
+    }
+    &:-ms-input-placeholder {
+        @arguments();
+    }
+}
+
+/****************
+     Fonts
+*****************/
+.font-mixin(@font-family-fallbacks,@weight,@style) {
+    font-family: @font-family-fallbacks;
+    font-weight: @weight;
+    font-style: @style;
+}
+
+/******************
+       For
+*****************/
+.for(@i, @n) {
+    .-each(@i)
+}
+
+.for(@n) when (isnumber(@n)) {
+    .for(1, @n)
+}
+
+.for(@i, @n) when not (@i = @n) {
+    .for((@i + (@n - @i) / abs(@n - @i)), @n);
+}
+
+.for(@array) when (default()) {
+    .for-impl_(length(@array))
+}
+
+.for-impl_(@i) when (@i > 1) {
+    .for-impl_((@i - 1))
+}
+
+.for-impl_(@i) when (@i > 0) {
+    .-each(extract(@array, @i))
+}

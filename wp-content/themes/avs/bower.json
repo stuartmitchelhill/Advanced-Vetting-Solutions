@@ -1,0 +1,13 @@
+{
+  "name": "Mitchelhini",
+  "homepage": "https://mitchelini.com/",
+  "authors": [
+    "Stuart Mitchelhill <stuart.mitchelhill@gmail.com>"
+  ],
+  "description": "Bower.json for Web Dev projects",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "chosen": "^1.8.2"
+  }
+}

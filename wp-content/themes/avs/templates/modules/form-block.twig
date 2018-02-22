@@ -1,0 +1,15 @@
+<div class="block block--form {{ content.block_appearance.vertical_spacing }} {{ content.block_appearance.background_colour }}">
+  <div class="wrapper cms-content {{ content.block_appearance.restricted_width }}">
+    {% if content.block_content.form_title %}
+      <h3>{{ content.block_content.form_title }}</h3>
+    {% endif %}
+    {% if content.block_content.form_introduction %}
+      <div class="form-introduction">
+        {{ content.block_content.form_introduction }}
+      </div>
+    {% endif %}
+    <div class="form">
+      {% filter shortcodes %}[gravityform id="{{ content.block_content.related_gform }}" title="false" description="false" ajax="true" tabindex="49"]{% endfilter %}
+    </div>
+  </div>
+</div>

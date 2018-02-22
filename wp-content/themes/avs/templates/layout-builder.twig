@@ -1,0 +1,27 @@
+{% for content in post.get_field('layout_builder') %}
+  {% if content.acf_fc_layout == 'single_column_block' %}
+
+    {% include 'modules/single-column-block.twig' %}
+
+  {% elseif content.acf_fc_layout == 'two_column_block' %}
+
+    {% include 'modules/two-column-block.twig' %}
+
+  {% elseif content.acf_fc_layout == 'two_thirds_column_block' %}
+
+    {% include 'modules/two-thirds-column-block.twig' %}
+
+  {% elseif content.acf_fc_layout == 'accordion_list_block' %}
+
+    {% include 'modules/accordion-list-block.twig' %}
+
+  {% elseif content.acf_fc_layout == 'call_to_action_banner_block' %}
+
+    {% include 'modules/call-to-action-banner-block.twig' %}
+
+  {% elseif content.acf_fc_layout == 'form_block' %}
+
+    {% include 'modules/form-block.twig' %}
+
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js" {{site.language_attributes}}>
+<head>
+  <meta charset="{{site.charset}}" />
+  <title>
+    {% if wp_title %}
+      {{ wp_title }} - {{ site.name }}
+    {% else %}
+      {{ site.name }}
+    {% endif %}
+  </title>
+  <meta name="description" content="{{site.description}}">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="pingback" href="{{site.pingback_url}}" />
+  {{function('wp_head')}}
+
+  <link rel="stylesheet" href="{{ theme.link }}/dist/fonts/fontello/css/fontello.css"/>
+  <link rel="stylesheet" href="{{ theme.link }}/dist/css/vendor.css"/>
+  <link rel="stylesheet" href="{{ theme.link }}/dist/css/main.css"/>
+</head>
+
+<body class="{{body_class}} {% block page_class %}{% endblock page_class %}" data-template="base.twig">
+<div id="top">
+  {% block header %}
+    <header class="header">
+      <div class="wrapper">
+        <div class="left">
+          <a class="logo" href="/"><img src="{{ site.theme.link }}/dist/img/logo.svg" alt=""/></a>
+          <a href="javascript:void(0)" class="js-menu-trigger menu-trigger"><span></span></a>
+          <nav class="main-navigation">
+            <ul>
+              {% for item in menu.get_items %}
+                <li class="{% if item.current %} active {% endif %} {% if item.get_children %}has-dropdown{% endif %}">
+                  <a href="{{item.get_link}}">{{item.title}}</a>
+                  {% if item.get_children %}
+                    <ul class="dropwdown">
+                      {% for child in item.get_children %}
+                        <li><a href="{{child.get_link}}">{{child.title}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+  {% endblock %}
+
+  {% block main_content %}
+    <main class="content">
+      {% block content %}
+        Sorry, no content
+      {% endblock %}
+    </main>
+  {% endblock main_content %}
+</div>
+
+{% block footer %}
+  <footer id="footer">
+    <div class="wrapper">
+      <div class="footer--top">
+        <nav class="navigation">
+          <ul>
+            {% for item in menu.get_items %}
+              <li>
+                <a href="{{ item.get_link }}">{{ item.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+        <div class="contact-info">
+          <a href="mailto: {{ options.email_address }}">{{ options.email_address }}</a>
+          <a href="tel:{{ options.phone_number }}">{{ options.phone_number }}</a>
+        </div>
+      </div>
+      <div class="footer--bottom">
+        <div class="legal">
+          <p class="copyright">Copyright {{"now"|date('Y')}} Advanced Vetting Solutions, All rights reserved</p>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="socials">
+          <a href="{{ options.twitter_url }}" target="_blank"><span class="icon-twitter"></span></a>
+          <a href="{{ options.linkedin_url }}" target="_blank"><span class="icon-linkedin"></span></a>
+          <a href="{{ options.facebook_url }}" target="_blank"><span class="icon-facebook"></span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="{{ theme.link }}/dist/js/vendor.js"></script>
+  <script src="{{ theme.link }}/dist/js/main.js"></script>
+  {{ function('wp_footer') }}
+{% endblock footer %}
+</body>
+</html>

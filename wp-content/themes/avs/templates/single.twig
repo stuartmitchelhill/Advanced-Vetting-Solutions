@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  {% include 'partials/_page-banner.twig' %}
+
+	<div class="block padded block--post-content">
+		<div class="wrapper cms-content">
+      {{post.content}}
+		</div>
+	</div>
+
+  {% include 'layout-builder.twig' %}
+{% endblock %}

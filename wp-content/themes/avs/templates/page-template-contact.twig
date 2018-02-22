@@ -1,0 +1,36 @@
+{% extends "base.twig" %}
+
+{% block page_class(' contact-us') %}
+
+{% block content %}
+  <div class="block block--page-banner" style="background-image: url('https://unsplash.it/1920/1080')">
+    <div class="wrapper cms-content">
+      <h1>{{ post.title }}</h1>
+    </div>
+  </div>
+
+  <div class="block padded block--main-post-content">
+    <div class="wrapper cms-content">
+      <div class="flex-cols two-thirds">
+        <div class="col">
+          {{post.content}}
+          {# @TODO: Add Form #}
+        </div>
+        <div class="col">
+          <ul>
+            <li>
+              {# @TODO: Update contact phone number with CMS contact details #}
+              <a href="tel:1800000000"><span class="icon icon-phone"></span> 1800 000 000</a>
+            </li>
+            <li>
+              <a href="mailto:hello@advancedvettingsolutions.com.au"><span class="icon icon-mail"></span> hello@advancedvettingsolutions.com.au</a>
+            </li>
+            <li>
+              <span class="icon icon-location"></span> 123 StreetName Street, Norman Park QLD [4006]
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
