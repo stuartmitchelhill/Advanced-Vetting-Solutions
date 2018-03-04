@@ -1,4 +1,5 @@
 <?php
+die('s');
 /**
  * The base configurations of the WordPress.
  *
