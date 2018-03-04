@@ -1,27 +1,35 @@
 {% for content in post.get_field('layout_builder') %}
-  {% if content.acf_fc_layout == 'single_column_block' %}
+    {% if content.acf_fc_layout == 'single_column_block' %}
 
-    {% include 'modules/single-column-block.twig' %}
+        {% include 'modules/single-column-block.twig' %}
 
-  {% elseif content.acf_fc_layout == 'two_column_block' %}
+    {% elseif content.acf_fc_layout == 'two_column_block' %}
 
-    {% include 'modules/two-column-block.twig' %}
+        {% include 'modules/two-column-block.twig' %}
 
-  {% elseif content.acf_fc_layout == 'two_thirds_column_block' %}
+    {% elseif content.acf_fc_layout == 'two_thirds_column_block' %}
 
-    {% include 'modules/two-thirds-column-block.twig' %}
+        {% include 'modules/two-thirds-column-block.twig' %}
 
-  {% elseif content.acf_fc_layout == 'accordion_list_block' %}
+    {% elseif content.acf_fc_layout == 'three_column_block' %}
 
-    {% include 'modules/accordion-list-block.twig' %}
+        {% include 'modules/three-column-block.twig' %}
 
-  {% elseif content.acf_fc_layout == 'call_to_action_banner_block' %}
+    {% elseif content.acf_fc_layout == 'four_column_block' %}
 
-    {% include 'modules/call-to-action-banner-block.twig' %}
+        {% include 'modules/four-column-block.twig' %}
 
-  {% elseif content.acf_fc_layout == 'form_block' %}
+    {% elseif content.acf_fc_layout == 'gallery_slideshow_block' %}
 
-    {% include 'modules/form-block.twig' %}
+        {% include 'modules/gallery-slideshow-block.twig' %}
 
-  {% endif %}
+    {% elseif content.acf_fc_layout == 'accordion_block' %}
+
+        {% include 'modules/accordion-block.twig' %}
+
+    {% elseif content.acf_fc_layout == 'split_section_block' %}
+
+        {% include 'modules/split-section-block.twig' %}
+
+    {% endif %}
 {% endfor %}

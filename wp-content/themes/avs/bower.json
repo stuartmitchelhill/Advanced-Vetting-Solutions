@@ -8,6 +8,8 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "chosen": "^1.8.2"
+    "chosen": "^1.8.2",
+    "slick-carousel": "^1.8.1",
+    "scrollmagic": "^2.0.5"
   }
 }

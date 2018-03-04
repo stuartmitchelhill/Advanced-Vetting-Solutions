@@ -1,0 +1,37 @@
+<div class="block block--gallery-slideshow {{ content.block_appearance.vertical_spacing }} {{ content.block_appearance.background_colour }} split-{{ content.block_appearance.split_colour }}">
+    <div class="wrapper cms-content {{ content.block_appearance.restricted_width }}">
+        {% if content.block_content.title %}
+            <h2>{{ content.block_content.title }}</h2>
+        {% endif %}
+        {% if content.block_content.introduction %}
+            {{ content.block_content.introduction }}
+        {% endif %}
+        <div class="gallery-slideshow slider-container {% if (content.block_appearance.slideshow_style == "arrow-navigation" or content.block_appearance.slideshow_style ==  'both') %}fancy-controls{% endif %} {% if (content.block_appearance.slideshow_style ==  'thumbnail-navigation' or content.block_appearance.slideshow_style ==  'both') %}thumbnail-navigation{% endif %}">
+            <div class="inner-container">
+                <div class="slider">
+                    {% for image in content.block_content.images %}
+                        <div class="slide"  style="background-image: url('{{ Image(image.image).src }}')"><a href="{{ Image(image.image).src }}" data-fancybox="group"></a></div>
+                    {% endfor %}
+                </div>
+                {% if content.block_appearance.slideshow_style == 'arrow-navigation' %}
+                    <div class="slider-controls"></div>
+                {% elseif content.block_appearance.slideshow_style == 'both' %}
+                    <div class="slider-controls"></div>
+                {% endif %}
+            </div>
+            {% if content.block_appearance.slideshow_style == 'thumbnail-navigation' %}
+                <div class="slider-navigation">
+                    {% for image in content.block_content.images %}
+                        <div class="slide" style="background-image: url('{{ Image(image.image).src }}')"></div>
+                    {% endfor %}
+                </div>
+            {% elseif content.block_appearance.slideshow_style == 'both' %}
+                <div class="slider-navigation">
+                    {% for image in content.block_content.images %}
+                        <div class="slide" style="background-image: url('{{ Image(image.image).src }}')"></div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

@@ -61,6 +61,89 @@
 }
 
 /******************
+     Effects
+*******************/
+.hardwareAccel() {
+    .prefixed(transform, perspective(1px) translateZ(0));
+}
+
+.improveAntiAlias() {
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.forceBlockLevel() {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.hacks() {
+    .forceBlockLevel();
+    .hardwareAccel();
+    .improveAntiAlias();
+}
+
+.prefixed(@property, @value) {
+    & when (@webkit = true) {
+        -webkit-@{property}: @value;
+    }
+
+    & when (@moz = true) {
+        -moz-@{property}: @value;
+    }
+
+    & when (@ms = true) {
+        -ms-@{property}: @value;
+    }
+
+    & when (@o = true) {
+        -o-@{property}: @value;
+    }
+
+        @{property}: @value;
+}
+
+// Browser Prefixes - Which CSS prefixes should be used?
+@webkit: true;
+@moz: true;
+@ms: true;
+@o: false;
+
+// Compile with or without classes
+@includeClasses: true;
+
+.underline-from-center(@color, @height) {
+    @duration: .2s;;
+
+    .hacks();
+    position: relative;
+    overflow: hidden;
+
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 50%;
+        right: 50%;
+        bottom: 0;
+        background: @color;
+        height: @height;
+        .prefixed(transition-property, "left, right");
+        .prefixed(transition-duration, @duration);
+        .prefixed(transition-timing-function, ease-out);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+
+        &:before {
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+/******************
        For
 *****************/
 .for(@i, @n) {

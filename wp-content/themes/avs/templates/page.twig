@@ -3,15 +3,22 @@
 {% block page_class(' standard-page') %}
 
 {% block content %}
-  {% include 'partial/_page-banner.twig' %}
-
-	<div class="block padded block--main-post-content">
+	<div class="block block--page-banner">
 		<div class="wrapper cms-content">
-      {{post.content}}
+            {{ breadcrumbs }}
+			<h1>{{ post.title }}</h1>
 		</div>
 	</div>
 
+	{% if post.content %}
+		<div class="block padded block--main-post-content">
+			<div class="wrapper cms-content">
+				{{post.content}}
+			</div>
+		</div>
+	{% endif %}
+
 	<div class="layout-builder">
-    {% include 'layout-builder.twig' %}
+        {% include 'layout-builder.twig' %}
 	</div>
 {% endblock %}

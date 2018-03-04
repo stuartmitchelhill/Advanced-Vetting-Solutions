@@ -1,0 +1,9 @@
+{% extends "tease.twig" %}
+
+{% block content %}
+    <a href="{{ post.link }}">
+        <span class="icon icon-{{ post.get_field('icon') }}"></span>
+        <h3 class="title">{{ post.post_title }}</h3>
+        <p class="excerpt">{{ post.get_field('excerpt') }}</p>
+    </a>
+{% endblock %}

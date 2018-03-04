@@ -1,14 +1,20 @@
 {% extends "base.twig" %}
 
+{% block page_class(' blog-list-page') %}
+
 {% block content %}
-  {% include 'partial/_page-banner.twig' %}
+	<div class="block block--page-banner">
+		<div class="wrapper cms-content">
+			<h1>{{ post.title }}</h1>
+		</div>
+	</div>
 
 	<div class="block padded block--posts-list">
 		<div class="wrapper">
 			<div class="posts-list">
-        {% for post in posts %}
-          {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-        {% endfor %}
+				{% for post in posts %}
+				  {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+				{% endfor %}
 			</div>
 		</div>
 	</div>

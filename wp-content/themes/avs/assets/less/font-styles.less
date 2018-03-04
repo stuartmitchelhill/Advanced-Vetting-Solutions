@@ -3,276 +3,244 @@
 /****************
      Fonts
 *****************/
-.HelveticaNeue(@weight:400,@style:normal) {
-  .font-mixin(~"'Helvetica Neue','Helvetica',Arial,sans-serif", @weight, @style);
+.Montserrat(@weight:400,@style:normal) {
+    .font-mixin(~"'Montserrat','Helvetica', Arial,sans-serif", @weight, @style);
 }
 
 .defaultFont(@weight:400,@style:normal) {
-  .HelveticaNeue(@weight, @style);
+    .Montserrat(@weight, @style);
 }
 
 html, body {
-  .defaultFont();
-  .smooth();
+    .defaultFont();
+    .smooth();
 }
 
 /****************
     Text Styles
 *****************/
 .defaultH1() {
-  font-size: 28px;
-  color: @defaultH1;
-  margin: 0;
-  .defaultFont(700);
+    font-size: 28px;
+    color: @defaultH1;
+    margin: 0 0 34px;
+    text-transform: uppercase;
+    .defaultFont(700);
 }
 
-.defaultH2(){
-  font-size: 24px;
-  color: @defaultH2;
-  margin: 0;
-  .defaultFont(700);
-
-  &.accent-top {
-    position: relative;
-    padding-top: 25px;
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 50px;
-      height: 2px;
-      background: @main_colour;
-    }
-  }
-
-  &.accent-bottom {
-    position: relative;
-    padding-bottom: 25px;
-
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 50px;
-      height: 2px;
-      background: @main_colour;
-    }
-  }
+.defaultH2() {
+    font-size: 24px;
+    color: @defaultH2;
+    margin: 0 0 24px;
+    text-transform: uppercase;
+    .defaultFont(700);
 }
 
 .defaultH3() {
-  font-size: 20px;
-  color: @defaultH3;
-  margin: 0;
-  .defaultFont(500)
-}
-
-.h3 {
-  display: block;
-  font-size: 20px;
-  color: @defaultH3;
-  margin: 0;
-  .defaultFont(500)
-}
-
-.defaultH4() {
-  font-size: 18px;
-  color: @defaultH4;
-  margin: 0;
-  .defaultFont(500)
+    font-size: 20px;
+    color: @defaultH3;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+    .defaultFont(700);
 }
 
 .defaultP() {
-  font-size: 16px;
-  line-height: 155%;
-  margin: 0 0 25px;
-  color: @defaultP;
-  .defaultFont();
+    font-size: 14px;
+    line-height: 155%;
+    margin: 0 0 25px;
+    color: @defaultP;
+    .defaultFont();
 
-  strong {
-    font-weight: 700;
-  }
+    strong {
+        font-weight: 700;
+    }
 
-  em {
-    font-style: italic;
-  }
+    em {
+        font-style: italic;
+    }
 
-  &.intro {
-    font-size: 22px;
-    line-height: 135%;
-    color: @intro_colour;
-  }
-}
-
-blockquote {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-
-  &:before {
-    content: '“';
-    display: block;
-    font-size: 20px;
-    color: @main_colour;
-    position: absolute;
-    left: 10px;
-  }
-
-  p {
-    font-style: italic;
-    padding: 0 25px;
-  }
+    &.intro {
+        font-size: 16px;
+        line-height: 135%;
+        color: @intro_colour;
+    }
 }
 
 .defaultA() {
-  color: @default_a_colour;
-  text-decoration: none;
-  transition: 0.2s;
-
-  &:hover {
-    color: @default_a_hover_colour;
+    font-size: 14px;
+    color: @default_a_colour;
     text-decoration: none;
-  }
-  
-  &:active {
-    color: @default_a_active_colour;
-  }
+    transition: 0.2s;
+    .defaultFont(500);
+    .underline-from-center(@default_a_colour, 1px);
 
-  &.arrow-link {
-    position: relative;
-    padding-right: 15px !important;
-    &:before {
-      content: '\e802';
-      font-family: 'fontello';
-      display: block;
-      font-size: 12px;
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
+    &:hover {
+        text-decoration: none;
+        opacity: 0.9;
     }
-  }
+
+    &:active {
+        opacity: 0.5;
+    }
+
+    &.arrow-link {
+        &:before {
+            display: none;
+        }
+
+        &.right {
+            &:after {
+                content: '\e80c';
+                font-family: 'fontello';
+                display: inline-block;
+                padding-left: 10px;
+                font-size: 10px;
+                transition: 0.2s;
+            }
+        }
+
+        &.left {
+            &:before {
+                content: '\e80b';
+                font-family: 'fontello';
+                display: inline-block;
+                padding-right: 10px;
+                font-size: 10px;
+                transition: 0.2s;
+            }
+        }
+
+        &:hover {
+            &.right {
+                &:after {
+                    padding-left: 16px;
+                }
+            }
+
+            &.left {
+                &:before {
+                    padding-right: 16px;
+                }
+            }
+        }
+    }
 }
 
 .btn {
-  display: inline-block;
-  outline: none;
-  overflow: visible;
-  cursor: pointer;
-  line-height: 100%;
-  padding: 8px 14px;
-  font-size: 14px;
-  text-align: center;
-  border: 2px solid @main_colour;
-  transition: 0.2s;
+    display: inline-block;
+    outline: none;
+    overflow: visible;
+    cursor: pointer;
+    line-height: 100%;
+    padding: 12px 18px;
+    font-size: 14px;
+    text-align: center;
+    border: 2px solid @main_colour;
+    text-transform: uppercase;
+    transition: 0.2s;
+    .defaultFont(700);
+
+    &:before {
+        display: none;
+    }
 }
 
 .btn-primary {
-  background: @primary_btn_bg;
-  color: @primary_btn_colour;
+    background: @primary_btn_bg;
+    color: @primary_btn_colour;
 
-  &:hover {
-    color: @primary_btn_colour_hover;
-    background: @primary_btn_bg_hover;
-    border-color: @primary_btn_bg_hover;
-  }
+    &:hover {
+        color: @primary_btn_colour_hover;
+        background: @primary_btn_bg_hover;
+        border-color: @primary_btn_bg_hover;
+    }
 
-  &:active {
-    color: @primary_btn_colour_active;
-    background: @primary_btn_bg_active;
-  }
+    &:active {
+        color: @primary_btn_colour_active;
+        background: @primary_btn_bg_active;
+    }
 
-  &:disabled {
-    opacity: 0.3;
-  }
+    &:disabled {
+        opacity: 0.3;
+    }
 }
 
 .btn-secondary {
-  background: @secondary_btn_bg;
-  color: @secondary_btn_colour;
+    background: @secondary_btn_bg;
+    color: @secondary_btn_colour;
 
-  &:hover {
-    color: @secondary_btn_colour_hover;
-    background: @secondary_btn_bg_hover;
-    border-color: @secondary_btn_bg_hover;
-  }
+    &:hover {
+        color: @secondary_btn_colour_hover;
+        background: @secondary_btn_bg_hover;
+        border-color: @secondary_btn_bg_hover;
+    }
 
-  &:active {
-    color: @secondary_btn_colour_active;
-    background: @secondary_btn_bg_active;
-    border-color: @secondary_btn_bg_active;
-  }
+    &:active {
+        color: @secondary_btn_colour_active;
+        background: @secondary_btn_bg_active;
+    }
 
-  &:disabled {
-    opacity: 0.3;
-  }
+    &:disabled {
+        opacity: 0.3;
+    }
 }
 
 .defaultUl {
-  padding-left: 20px;
-  list-style: disc;
-  margin: 0;
-  .defaultLi();
-  li {
+    padding-left: 20px;
+    list-style: disc;
+    margin: 0;
+    .defaultLi();
+    li {
 
-  }
+    }
 }
 
 .defaultLi() {
-  li {
-    .defaultP();
-    margin: 0;
-  }
+    li {
+        .defaultP();
+        margin: 0;
+    }
 }
 
 .defaultOl {
-  list-style: decimal;
-  padding-left: 20px;
-  margin: 0;
-  .defaultLi();
-  li {
+    list-style: decimal;
+    padding-left: 20px;
+    margin: 0;
+    .defaultLi();
+    li {
 
-  }
+    }
 }
 
 .defaultTable() {
-  width: 100%;
-  margin: 0 0 20px;
+    width: 100%;
+    margin: 0 0 20px;
 }
 
 .defaultTextStyles() {
-  h1 {
-    .defaultH1();
-  }
-  h2 {
-    .defaultH2();
-  }
-  h3 {
-    .defaultH3();
-  }
-  h4 {
-    .defaultH4();
-  }
-  p {
-    .defaultP();
-  }
-  a {
-    .defaultA();
-  }
-  ul {
-    .defaultUl();
-  }
-  ol {
-    .defaultOl();
-  }
-  table {
-    .defaultTable()
-  }
+    h1 {
+        .defaultH1();
+    }
+    h2 {
+        .defaultH2();
+    }
+    h3 {
+        .defaultH3();
+    }
+    p {
+        .defaultP();
+    }
+    a {
+        .defaultA();
+    }
+    ul {
+        .defaultUl();
+    }
+    ol {
+        .defaultOl();
+    }
+    table {
+        .defaultTable()
+    }
 }
 
 .defaultTextStyles();

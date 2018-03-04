@@ -1,0 +1,24 @@
+<div class="block block--four-cols {{ content.block_appearance.vertical_spacing }} {{ content.block_appearance.background_colour }}">
+    <div class="wrapper cms-content {{ content.block_appearance.restricted_width }}">
+        {% if content.block_content.title %}
+            <h2>{{ content.block_content.title }}</h2>
+        {% endif %}
+        {% if content.block_content.introduction %}
+            {{ content.block_content.introduction }}
+        {% endif %}
+        <div class="flex-cols four">
+            <div class="col">
+                {{ content.block_content.left_content }}
+            </div>
+            <div class="col">
+                {{ content.block_content.middle_content_left }}
+            </div>
+            <div class="col">
+                {{ content.block_content.middle_content_right }}
+            </div>
+            <div class="col">
+                {{ content.block_content.right_content }}
+            </div>
+        </div>
+    </div>
+</div>

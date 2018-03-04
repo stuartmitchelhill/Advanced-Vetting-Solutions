@@ -1,11 +1,19 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  {% include 'partials/_page-banner.twig' %}
+	<div class="block block--page-banner">
+		<div class="wrapper cms-content">
+			{{ breadcrumbs }}
+			<h1>{{ post.title }}</h1>
+			{% if 'post' == post.post_type %}
+				<p class="subtitle">{{ post.date }}</p>
+			{% endif %}
+		</div>
+	</div>
 
 	<div class="block padded block--post-content">
 		<div class="wrapper cms-content">
-      {{post.content}}
+      		{{post.content}}
 		</div>
 	</div>
 

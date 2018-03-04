@@ -2,16 +2,102 @@
 
 {% block page_class(' homepage') %}
 
-{% block content %}
-  <div class="block block--page-banner" style="background-image: url('https://unsplash.it/1920/1080')">
-    <div class="wrapper cms-content">
-      <h1>{{ post.title }}</h1>
-    </div>
-  </div>
+{% block extra_footer_scripts %}
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHGdL0-zlPSgcD5dG0CY54oR_94Aykues&callback=initMap"></script>
+{% endblock extra_footer_scripts %}
 
-  <div class="block padded block--main-post-content">
-    <div class="wrapper cms-content">
-      {{post.content}}
+{% block content %}
+    <div class="block blue padded block--page-banner">
+        <div class="wrapper">
+            <h1>{{ post.title }}</h1>
+            <p>{{ post.get_field('banner_text') }}</p>
+        </div>
     </div>
-  </div>
+
+    <div id="white-section-1" class="block padded white block--main-content">
+        <div class="wrapper">
+            {{ post.content }}
+        </div>
+    </div>
+
+    <div class="block block--about-us">
+        <section class="split-section">
+            <div class="split-section--left about-us--introduction">
+                {{ post.get_field('about_us_introduction') }}
+            </div>
+            <div class="split-section--right about-us--image" style="background-image: url('{{ Image(post.get_field('about_us_image')).src|resize(800,800) }}')" ></div>
+        </section>
+    </div>
+
+    <div id="white-section-2" class="block padded white block--services">
+        <div class="wrapper large">
+            {{ post.get_field('services_introduction') }}
+            <div class="flex-cols three">
+                {% for post in vetting_services %}
+                    <div class="col">
+                        {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+                    </div>
+                {% endfor %}
+            </div>
+            <a href="{{ options.services_page_link }}" class="arrow-link right">Learn more</a>
+        </div>
+    </div>
+
+    <div id="white-section-3" class="block block--contact-us">
+        <section class="split-section reverse">
+            <div class="split-section--left contact-us--map">
+                <div id="map"></div>
+            </div>
+            <div class="split-section--right contact-us--info">
+                <h2>Contact Us</h2>
+                <ul>
+                    {% if options.phone_number %}
+                        <li><span class="icon icon-phone"></span> <a href="tel:{{ options.phone_number }}">{{ options.phone_number }}</a></li>
+                    {% endif %}
+                    {% if options.email_address %}
+                        <li><span class="icon icon-mail"></span> <a href="mailto:{{ options.email_address }}">{{ options.email_address }}</a></li>
+                    {% endif %}
+                    {% if options.postal_address %}
+                        <li><span class="icon icon-location"></span> <span>{{ options.postal_address }}</span></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <div id="white-section-4" class="block white padded block--get-in-touch">
+        <div class="wrapper">
+            {{ post.get_field('get_in_touch_introduction') }}
+            <div class="form-container">
+                <form action="">
+                    <div class="form-row">
+                        <div class="control-group half">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="first-name" placeholder="First Name">
+                        </div>
+                        <div class="control-group half">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="last-name" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="email-address">Email Address</label>
+                        <div class="control-group">
+                            <input type="email" id="email-address" name="email-address" placeholder="Email Address">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="control-group">
+                            <label for="enquiry">Enquiry</label>
+                            <textarea name="enquiry" id="enquiry"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <input type="submit" value="submit" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

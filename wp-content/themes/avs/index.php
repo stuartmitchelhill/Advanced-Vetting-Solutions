@@ -14,13 +14,12 @@
  */
 
 $context = Timber::get_context();
+
 $post = new TimberPost();
 $context['post'] = $post;
-$context['posts'] = new Timber\PostQuery();
-$context['pagination'] = Timber::get_pagination();
-$templates = array( 'index.twig' );
 
-if ( is_home() ) {
-	array_unshift( $templates, 'page-template-homepage.twig' );
-}
-Timber::render( $templates, $context );
+$context['posts'] = new Timber\PostQuery();
+
+$context['pagination'] = Timber::get_pagination();
+
+Timber::render( 'index.twig', $context );

@@ -30,6 +30,36 @@ class StarterSite extends TimberSite {
 
 	function register_post_types() {
 		//this is where you can register custom post types
+        // Services
+        register_post_type( 'service',
+            array(
+                'labels' => array(
+                    'name' => __( 'Services' ),
+                    'singular_name' => __( 'Service' ),
+                    'menu_name'          => _x( 'Services', 'admin menu', 'avs' ),
+                    'name_admin_bar'     => _x( 'Service', 'add new on admin bar', 'avs' ),
+                    'add_new'            => _x( 'Add New', 'service', 'avs' ),
+                    'add_new_item'       => __( 'Add New Service', 'avs' ),
+                    'new_item'           => __( 'New Service', 'avs' ),
+                    'edit_item'          => __( 'Edit Service', 'avs' ),
+                    'view_item'          => __( 'View Service', 'avs' ),
+                    'all_items'          => __( 'All Services', 'avs' ),
+                    'search_items'       => __( 'Search Services', 'avs' ),
+                    'parent_item_colon'  => __( 'Parent Services:', 'avs' ),
+                    'not_found'          => __( 'No Services found.', 'avs' ),
+                    'not_found_in_trash' => __( 'No Services found in Trash.', 'avs' )
+                ),
+                'rewrite' => array(
+                    'slug' => 'services'
+                ),
+                'public' => true,
+                'has_archive' => true,
+                'menu_icon' => 'dashicons-clipboard',
+                'supports' => array(
+                    'title', 'thumbnail', 'editor'
+                )
+            )
+        );
 	}
 
 	function register_taxonomies() {
@@ -37,9 +67,19 @@ class StarterSite extends TimberSite {
 	}
 
 	function add_to_context( $context ) {
+	    //menus
+		$context['menu'] = new TimberMenu('Main Navigation');
+        $context['secondary_menu'] = new TimberMenu('Secondary Navigation');
+
+        //breadcrumbs
+        if ( function_exists( 'yoast_breadcrumb' ) ) {
+            $context['breadcrumbs'] = yoast_breadcrumb('<div class="breadcrumbs">','</div>', false );
+        }
+
+        //acf sitewide options
         $context['options'] = get_fields('options');
-		$context['menu'] = new TimberMenu();
-		$context['site'] = $this;
+
+        $context['site'] = $this;
 		return $context;
 	}
 
@@ -58,3 +98,68 @@ class StarterSite extends TimberSite {
 }
 
 new StarterSite();
+
+add_editor_style('style.css');
+
+// Add format dropdown to wysiwyg
+function activate_format_dropdown($buttons)
+{
+    array_unshift($buttons, 'styleselect');
+
+    return $buttons;
+}
+add_filter('mce_buttons_2','activate_format_dropdown');
+
+// Add custom styles to wysiwyg
+function add_style_to_content_editor( $init_array ) {
+
+    $style_formats = array(
+        array(
+            'title' => 'Intro',
+            'block' => 'p',
+            'classes' => 'intro',
+            'wrapper' => false,
+        ),
+
+        array(
+            'title' => 'Button',
+            'selector' => 'a',
+            'classes' => 'btn-primary',
+            'wrapper' => false,
+            'exact' => true,
+        ),
+
+        array(
+            'title' => 'Arrow Left',
+            'selector' => 'a',
+            'classes' => 'arrow-link left',
+            'wrapper' => false,
+            'exact' => true,
+        ),
+
+        array(
+            'title' => 'Arrow Right',
+            'selector' => 'a',
+            'classes' => 'arrow-link right',
+            'wrapper' => false,
+            'exact' => true,
+        )
+    );
+
+    $init_array['style_formats'] = json_encode( $style_formats );
+
+    return $init_array;
+}
+add_filter( 'tiny_mce_before_init', 'add_style_to_content_editor' );
+
+function add_my_favicon() {
+    $favicon_path = get_template_directory_uri() . '/assets/img/favicon-32x32.png';
+
+    echo '<link rel="shortcut icon" href="' . $favicon_path . '" />';
+}
+
+// Add options page to theme
+if( function_exists('acf_add_options_page') ) {
+    acf_add_options_page();
+}
+

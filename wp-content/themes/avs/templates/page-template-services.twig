@@ -1,17 +1,45 @@
 {% extends "base.twig" %}
 
-{% block page_class(' standard-page') %}
+{% block page_class(' services-list-page') %}
 
 {% block content %}
-  {% include 'partial/_page-banner.twig' %}
-
-  <div class="block padded block--main-post-content">
-    <div class="wrapper cms-content">
-      {{post.content}}
+    <div class="block block--page-banner">
+        <div class="wrapper cms-content">
+            {{ breadcrumbs }}
+            <h1>{{ post.title }}</h1>
+        </div>
     </div>
-  </div>
 
-  <div class="layout-builder">
-    {% include 'layout-builder.twig' %}
-  </div>
+    {% if post.content %}
+        <div class="block padded block--main-content">
+            <div class="wrapper cms-content">
+                {{post.content}}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="block padded-bottom block--services-list">
+        <div class="wrapper cms-content">
+            <div class="service-list">
+                {% for service in vetting_services %}
+                    <div class="service">
+                        <a href="{{ fn('get_permalink', service.ID) }}">
+                            <span class="image">
+                                <img src="{{ Image(service.thumbnail).src|resize(287.3,189) }}" alt="">
+                            </span>
+                            <span class="info">
+                                <span class="title">{{ service.post_title }}</span>
+                                <span class="excerpt">{{ service.content|excerpt(25) }}</span>
+                                <span class="btn btn-primary">Learn More</span>
+                            </span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="layout-builder">
+        {% include 'layout-builder.twig' %}
+    </div>
 {% endblock %}

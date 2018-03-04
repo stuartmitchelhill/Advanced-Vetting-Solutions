@@ -14,73 +14,61 @@
 @grey9: #999999;
 @greyD: #DDDDDD;
 @greyC: #CCCCCC;
+@greyF: #FAFAFA;
 
 
 /**********************
     Primary Colours
 **********************/
-@main_colour: #A9233E;
-@secondary_colour: #000000;
-
-@main_colour_alt: #000000;
-@secondary_colour_alt: #000000;
+@main_colour: #001849;
 
 /***************************
     Default Text Colours
 ****************************/
-@default_text_colour: #656565;
+@default_text_colour: @grey3;
 @defaultH1: @white;
-@defaultH2: #000000;
-@defaultH3: #000000;
-@defaultH4: #000000;
+@defaultH2: @main_colour;
+@defaultH3: @main_colour;
+
 @defaultP: @default_text_colour;
 @intro_colour: @default_text_colour;
 
-@default_a_colour: @default_text_colour;
-@default_a_hover_colour: @main_colour;
-@default_a_active_colour: lighten(@main_colour, 10%);
+@default_a_colour: @main_colour;
 
 @primary_btn_colour: @white;
 @primary_btn_bg: @main_colour;
 @primary_btn_colour_hover: @primary_btn_colour;
 @primary_btn_bg_hover: lighten(@primary_btn_bg, 10%);
 @primary_btn_colour_active: @primary_btn_colour;
-@primary_btn_bg_active: darken(@primary_btn_bg, 10%);
+@primary_btn_bg_active: darken(@primary_btn_bg, 5%);
 
-@secondary_btn_colour: @default_text_colour;
-@secondary_btn_bg: transparent;
+
+@secondary_btn_colour: @main_colour;
+@secondary_btn_bg: @white;
 @secondary_btn_colour_hover: @white;
 @secondary_btn_bg_hover: lighten(@main_colour, 10%);
-@secondary_btn_colour_active: @secondary_btn_colour_hover;
-@secondary_btn_bg_active: darken(@main_colour, 10%);
-
-/******************
-    Nav Colours
-*******************/
-@nav_item_colour: @main_colour;
-@nav_item_colour_hover: lighten(@nav_item_colour,10%);
-@nav_item_colour_active: @nav_item_colour;
+@secondary_btn_colour_active: @white;
+@secondary_btn_bg_active: lighten(@secondary_btn_bg, 15%);
 
 /*******************
     Form Styles
 ********************/
-@form_label_colour: @default_text_colour;
-@form_input_bg_colour: #F7F7F7;
-@form_input_border: #F7F7F7;
-@form_input_border_focus: #48B2FF;
-@form_input_border_error: @main_colour;
-@form_input_placeholder_colour: #8B8B8B;
+@form_label_colour: @main_colour;
+@form_input_bg_colour: @white;
+@form_input_border: @greyC;
+@form_input_border_focus: @main_colour;
+@form_input_border_error: #FF4747;
+@form_input_placeholder_colour: @grey6;
 @form_input_text_colour: @default_text_colour;
 
 /***************************
       Borders/Shadows
 ****************************/
-@default_border_colour: #E3E3E3;
-@default_shadow_colour: #DDD;
+@default_border_colour: rgba(0,24,73,0.05);
 
 /**********************
       Breadcrumbs
 ***********************/
-@breadcrumb_a_colour: @default_text_colour;
-@breadcrumb_a_colour_hover: @main_colour;
-@breadcrumb_span_colour: @breadcrumb_a_colour;
+@breadcrumb_a_colour: @main_colour;
+@breadcrumb_a_colour_hover: lighten(@main_colour, 10%);
+@breadcrumb_span_colour: @main_colour;

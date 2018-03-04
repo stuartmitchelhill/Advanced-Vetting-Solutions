@@ -1,0 +1,16 @@
+<div class="block block--split--section">
+    <section class="split-section {% if content.reverse %}reverse{% endif %}">
+        {% if content.reverse %}
+            <div class="split-section--left" style="background-image: url('{{ Image(content.split_section_image_left).src|resize(1200,1200) }}')">
+            </div>
+            <div class="split-section--right">
+                {{ content.split_section_content_right }}
+            </div>
+        {% else %}
+            <div class="split-section--left">
+                {{ content.split_section_content_left }}
+            </div>
+            <div class="split-section--right" style="background-image: url('{{ Image(content.split_section_image_right).src|resize(1200,1200) }}')" ></div>
+        {% endif %}
+    </section>
+</div>

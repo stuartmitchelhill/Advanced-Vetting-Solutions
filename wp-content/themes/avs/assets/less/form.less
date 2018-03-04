@@ -2,574 +2,62 @@
 /****************
      Forms
 *****************/
-.grey {
-  .gform_wrapper {
-    form {
-      .gform_body {
+form {
+    .form-row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .control-group {
+            width: 100%;
+            margin: 0 0 16px;
+
+            &.half {
+                width: 100%; //~"calc(50% - 8px)"
+                margin: 0 0 16px 0; //0 16px 16px 0
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: @main_colour;
+            text-transform: uppercase;
+            margin: 0 0 6px;
+            .defaultFont(700);
+        }
+
         input[type=text],
         input[type=email],
-        input[type=password],
         textarea,
-        select {
-          color: @form_input_text_colour;
-          background: darken(@form_input_bg_colour, 5%);
-        }
-
-        .chosen-container {
-          &.chosen-container-single {
-            .chosen-single {
-              background: darken(@form_input_bg_colour, 5%);
-            }
-          }
-        }
-      }
-      .gform_footer {
-        .gform_ajax_spinner {
-          background: rgba(247, 247, 247, 0.5) url('@{img_dir}loading.svg') center center no-repeat;
-        }
-      }
-    }
-  }
-}
-
-.maroon {
-  .gform_wrapper {
-    .validation_error {
-      color: @white;
-      border-top: 2px solid @white;
-      border-bottom: 2px solid @white;
-    }
-
-    form {
-      .gform_body {
-        li.gfield {
-
-          &.gfield_error {
-            .validation_message {
-              color: @white;
-            }
-          }
-
-          &.normal-label {
-            .gfield_label {
-              color: @white;
-            }
-          }
-
-
-          &.label-up {
-            .gfield_label {
-              color: @white;
-              .gfield_required {
-                color: @white;
-              }
-            }
-          }
-        }
-
-        .gfield_checkbox {
-          .custom-input-set {
-            &:hover {
-              input[type=checkbox] + label + span {
-                &:before {
-                  color: #f7f7f7;
-                }
-              }
-
-              input[type=checkbox]:checked + label + span {
-                &:before {
-                  color: @white;
-                }
-              }
-            }
-          }
-
-          input[type=checkbox] + label + span {
-            &:before {
-              color: @white;
-            }
-          }
-
-          input[type=checkbox]:checked + label + span {
-            &:before {
-              color: @white;
-            }
-          }
-        }
-
-
-        // Custom Radios //
-        .gfield_radio {
-          .custom-input-set {
-            &:hover {
-              input[type=radio] + label + span {
-                &:before {
-                  color: #f7f7f7;
-                }
-              }
-
-              input[type=radio]:checked + label + span {
-                &:before {
-                  content: '\f192';
-                  color: @white;
-                }
-              }
-            }
-          }
-
-          input[type=radio] + label + span {
-            &:before {
-              color: @white;
-            }
-          }
-
-          input[type=radio]:checked + label + span {
-            &:before {
-              color: @white;
-            }
-          }
-        }
-      }
-
-      .gform_footer {
-        input[type=submit] {
-          &:extend(.btn);
-          background: @white;
-          border-color: @white;
-          color: @main_colour;
-        }
-
-        .gform_ajax_spinner {
-          background: rgba(169, 35, 62, 0.5) url('@{img_dir}loading.svg') center center no-repeat;
-        }
-      }
-    }
-  }
-}
-
-.gform_wrapper {
-  position: relative;
-
-  .validation_error {
-    font-size: 13px;
-    color: @form_input_border_error;
-    text-align: center;
-    text-transform: uppercase;
-    padding: 10px 0;
-    margin: 15px 0;
-    border-top: 2px solid @form_input_border_error;
-    border-bottom: 2px solid @form_input_border_error;
-    font-weight: bold;
-  }
-
-  form {
-    .gform_body {
-      width: 100%;
-      h2.gsection_title {
-        font-size: 18px;
-        margin: 25px 0 20px;
-        &:first-of-type {
-          margin: 15px 0 20px;
-        }
-      }
-
-      .gform_fields {
-        .clean-list();
-        li.gfield {
-          margin: 0 0 15px;
-          padding: 0;
-          &:before {
-            display: none;
-          }
-        }
-      }
-
-      li.gfield {
-        width: 100%;
-        position: relative;
-        clear: both;
-        margin: 0 0 15px;
-
-        &.gf_left_half, &.gf_right_half {
-          width: 100%;
-          clear: none;
-        }
-
-        &.gf_left_third, &.gf_middle_third, &.gf_right_third {
-          width: 100%;
-          clear: none;
-        }
-
-        &.gfield_error {
-          input[type=text],
-          input[type=email],
-          input[type=password],
-          textarea,
-          select {
-            border: none;
-            border-bottom: 1px solid @form_input_border_error;
-          }
-
-          .validation_message {
-            position: absolute;
-            font-size: 14px;
-            font-weight: bold;
-            color: @form_input_border_error;
-          }
-        }
-
-        &.is-textarea {
-          margin-top: 20px;
-          &.label-up {
-            .gfield_label {
-              top: -10px;
-            }
-          }
-
-          .gfield_label {
-            top: 25px;
-            transform: none;
-          }
-        }
-
-        &.normal-label {
-          .gfield_label {
-            position: relative;
-            display: inline-block;
-            font-size: 11px;
-            top: auto;
-            text-transform: uppercase;
-            color: @form_label_colour;
-            margin: 0 0 5px;
-            transform: none;
-            transition: none;
-            font-weight: bold;
-            left: 0;
-          }
-        }
-
-        &.label-up {
-          .gfield_label {
-            top: 0;
-            left: 0;
-            font-size: 11px;
-            text-transform: uppercase;
-            color: @form_label_colour;
-            font-weight: bold;
-          }
-        }
-      }
-
-      .gfield_label {
-        position: absolute;
-        font-size: 16px;
-        color: @form_input_placeholder_colour;;
-        top: ~"calc(50% + 5px)";
-        left: 15px;
-        transform: translateY(-50%);
-        transition: 0.2s;
-
-        .gfield_required {
-          color: @main_colour;
-          padding: 0 2px;
-        }
-      }
-
-      input[type=text],
-      input[type=email],
-      input[type=password],
-      textarea,
-      select {
-        appearance: none;
-        width: 100%;
-        padding: 10px 15px;
-        margin: 10px 0 0;
-        font-size: 16px;
-        color: @form_input_text_colour;
-        background: @form_input_bg_colour;
-        border: 1px solid @form_input_border;
-        border-radius: 0;
-        .placeholder({ color: @form_input_placeholder_colour; });
-
-        &:focus {
-          outline: none;
-          border: 1px solid @form_input_border_focus;
-        }
-      }
-
-      textarea {
-        // Allow for resizing of height, lock width
-        min-width: 100%;
-        max-width: 100%;
-      }
-
-      // Custom Select //
-      .ginput_container_select {
-        position: relative;
-
-        select {
-          margin: 0;
-        }
-
-        .gfield_label {
-          position: relative;
-        }
-
-        &:after {
-          content: '\f107';
-          font-family: 'fontello';
-          position: absolute;
-          right: 15px;
-          top: 50%;
-          transform: translateY(-50%);
-          color: @main_colour;
-          pointer-events: none;
-        }
-      }
-
-      .chosen-container {
-        &.chosen-container-single {
-          .chosen-single {
-            padding: 10px 15px;
-            height: auto;
-            border: none;
-            border-bottom: 1px solid @form_input_border;
-            border-radius: 0;
+        .custom-select {
+            appearance: none;
+            border: 1px solid @form_input_border;
             background: @form_input_bg_colour;
-            box-shadow: none;
             color: @form_input_text_colour;
+            font-size: 16px;
+            padding: 8px 16px;
+            border-radius: 0;
+            width: 100%;
             line-height: 100%;
-            font-weight: 400;
-            font-size: 16px;
-            text-transform: none;
+            .placeholder({ color: @form_input_placeholder_colour });
 
-            &:after {
-              display:none;
+            &:focus {
+                outline: none;
+                border: 1px solid @form_input_border_focus;
             }
-          }
         }
 
-        .chosen-drop {
-          border: none;
-          border-radius: 0;
-          background: #fff;
-          box-shadow: 0 0 15px rgba(0,0,0,.05);
+        textarea {
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 120px;
         }
-
-        .chosen-results {
-          margin: 0;
-          padding: 0;
-
-          li {
-            font-size: 16px;
-            padding: 10px;
-            white-space: nowrap;
-
-            &.result-selected {
-              background: #f7f7f7;
-              color: @main_colour;
-
-              &.highlighted {
-                background: #f7f7f7;
-                color: @main_colour;
-                cursor: default;
-              }
-            }
-
-            &.highlighted {
-              background: @main_colour;
-              color: @white;
-            }
-          }
-        }
-      }
-
-      // Custom Radio and Checkboxes //
-      .gfield_radio, .gfield_checkbox {
-        .clean-list();
-        label {
-          font-size: 16px;
-        }
-      }
-
-      &.chosen-container-single {
-        .chosen-single {
-          padding: 10px 0;
-          height: auto;
-          border: none;
-          border-bottom: 1px solid @form_input_border;
-          border-radius: 0;
-          background: @form_input_bg_colour;
-          box-shadow: none;
-          color: @form_input_text_colour;
-          line-height: 100%;
-          font-weight: 100;
-          font-size: 16px;
-        }
-      }
-
-      // Custom Checkboxes //
-      .gfield_checkbox {
-        .custom-input-set {
-          position: relative;
-          padding: 0;
-          margin: 0 0 10px;
-
-          &:before {
-            display: none;
-          }
-
-          &:hover {
-            input[type=checkbox] + label + span {
-              &:before {
-                content: '\f14a';
-                color: @form_input_placeholder_colour;
-              }
-            }
-
-            input[type=checkbox]:checked + label + span {
-              &:before {
-                content: '\f14a';
-                color: @form_input_text_colour;
-              }
-            }
-          }
-        }
-
-        input[type=checkbox]{
-          position: absolute;
-          left: -9999px;
-        }
-
-        label {
-          display: inline-block;
-          width: 100%;
-          padding-left: 30px;
-          cursor: pointer;
-        }
-
-        span {
-          cursor: pointer;
-        }
-
-        input[type=checkbox] + label + span {
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 18px;
-          height: 18px;
-
-          &:before {
-            content: '\f096';
-            font-family: 'fontello';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: @form_input_placeholder_colour;
-            font-size: 18px;
-          }
-        }
-
-        input[type=checkbox]:checked + label + span {
-          &:before {
-            content: '\f14a';
-            color: @main_colour;
-          }
-        }
-      }
-
-
-      // Custom Radios //
-      .gfield_radio {
-        .custom-input-set {
-          position: relative;
-          padding: 0;
-          margin: 0 0 10px;
-
-          &:before {
-            display: none;
-          }
-
-          &:hover {
-            input[type=radio] + label + span {
-              &:before {
-                content: '\f192';
-                color: @form_input_placeholder_colour;
-              }
-            }
-
-            input[type=radio]:checked + label + span {
-              &:before {
-                content: '\f192';
-                color: @form_input_text_colour;
-              }
-            }
-          }
-        }
-
-        input[type=radio]{
-          position: absolute;
-          left: -9999px;
-        }
-
-        label {
-          display: inline-block;
-          width: 100%;
-          padding-left: 30px;
-          cursor: pointer;
-        }
-
-        span {
-          cursor: pointer;
-        }
-
-        input[type=radio] + label + span {
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 18px;
-          height: 18px;
-
-          &:before {
-            content: '\f1db';
-            font-family: 'fontello';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: @form_input_placeholder_colour;
-            font-size: 18px;
-          }
-        }
-
-        input[type=radio]:checked + label + span {
-          &:before {
-            content: '\f192';
-            color: @main_colour;
-          }
-        }
-      }
     }
-
-    .gform_footer {
-      input[type=submit] {
-        &:extend(.btn);
-        &:extend(.btn-primary all);
-        display: block;
-        width: 100%;
-        padding: 10px 15px;
-      }
-
-      .gform_ajax_spinner {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100% !important;
-        height: 100% !important;
-        background: rgba(255, 255, 255, 0.5) url('@{img_dir}loading.svg') center center no-repeat;
-        background-size: 35px 35px;
-      }
-    }
-  }
 }

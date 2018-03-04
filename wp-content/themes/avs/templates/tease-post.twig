@@ -1,15 +1,14 @@
 {% extends "tease.twig" %}
 
 {% block content %}
-	<a href="{{ post.link }}">
+	<a href="{{post.link}}">
 		<span class="tease-image">
-			{% if post.thumbnail.src %}
-				<img src="{{ post.thumbnail.src }}" />
-      {% endif %}
+			<img src="{% if post.thumbnail %}{{ post.thumbnail.src|resize(596, 340) }}{% else %}{{ site.theme.link }}/dist/img/tease-placeholder.png{% endif %}" alt="{{ post.title }}"/>
 		</span>
 		<span class="tease-info">
-			<span class="tease-title">{{ post.title }}</span>
-			<span class="text-excerpt">{{ post.content|excerpt(25) }}</span>
+			<span class="tease-title">{{post.title}}</span>
+			<span class="tease-excerpt">{{post.content|excerpt(10)}}</span>
+			<span class="tease-link link-style">Read More <span class="icon-arrow-right"></span></span>
 		</span>
 	</a>
 {% endblock %}

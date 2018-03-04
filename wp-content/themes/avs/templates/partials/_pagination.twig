@@ -1,0 +1,15 @@
+<div class="block padded white block--pagination">
+    <a href="{{pagination.prev.link}}" class="btn btn-primary prev {{pagination.prev.link|length ? '' : 'hidden'}}"><span class="icon-arrow-left"></span></a>
+    <ul>
+        {% for page in pagination.pages %}
+            <li class="{{page.class}}">
+                {% if page.link %}
+                    <a href="{{page.link}}"><span>{{page.title}}</span></a>
+                {% else %}
+                    <span>{{page.title}}</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{pagination.next.link}}" class="btn btn-primary next {{pagination.next.link|length ? '' : 'hidden'}}"><span class="icon-arrow-right"></span></a>
+</div>

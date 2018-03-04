@@ -1,18 +1,27 @@
 <div class="block block--two-thirds-cols {{ content.block_appearance.vertical_spacing }} {{ content.block_appearance.background_colour }}">
-  <div class="wrapper cms-content {{ content.block_appearance.restricted_width }}">
-    {% if content.block_content.title %}
-      <h3>{{ content.block_content.title }}</h3>
-    {% endif %}
-    {% if content.block_content.introduction %}
-      <p>{{ content.block_content.introduction }}</p>
-    {% endif %}
-    <div class="flex-cols two-thirds {% if content.block_content.reverse_layout %}reverse{% endif %}">
-      <div class="col">
-        {{ content.block_content.left_content }}
-      </div>
-      <div class="col">
-        {{ content.block_content.right_content }}
-      </div>
+    <div class="wrapper cms-content {{ content.block_appearance.restricted_width }}">
+        {% if content.block_content.title %}
+            <h2>{{ content.block_content.title }}</h2>
+        {% endif %}
+        {% if content.block_content.introduction %}
+            {{ content.block_content.introduction }}
+        {% endif %}
+        <div class="flex-cols two-thirds {% if content.block_content.reverse %}reverse{% endif %}">
+            {% if content.block_content.reverse %}
+                <div class="col">
+                    {{ content.block_content.right_content_reverse }}
+                </div>
+                <div class="col">
+                    {{ content.block_content.left_content_reverse }}
+                </div>
+            {% else %}
+                <div class="col">
+                    {{ content.block_content.left_content }}
+                </div>
+                <div class="col">
+                    {{ content.block_content.right_content }}
+                </div>
+            {% endif %}
+        </div>
     </div>
-  </div>
 </div>
