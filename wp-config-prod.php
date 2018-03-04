@@ -22,7 +22,7 @@ define('DB_NAME', 'advanced_vetting_solutions');
 define('DB_USER', 'avs_website');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'NAxQ=ng$&r[%');
+define('DB_PASSWORD', 'tpic&htg*');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
