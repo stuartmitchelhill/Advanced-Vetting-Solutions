@@ -5,87 +5,12 @@ $(function () {
 
     // Functions //
     sliderSetup();
+    setSticky();
+    stickyScroll();
 
-    // Scroll Magic //
-    if($body.hasClass('homepage')) {
-        var headerHeight = $header.outerHeight(true) - 24;
-        var controller = new ScrollMagic.Controller();
-
-        // Introduction //
-        new ScrollMagic.Scene({
-            triggerElement: '#white-section-1',
-            offset: -headerHeight,
-            triggerHook: 0,
-            duration: $('#white-section-1').outerHeight(true)
-        })
-            .setClassToggle('#logo', 'blue')
-            // .addIndicators()
-            .addTo(controller);
-
-        new ScrollMagic.Scene({
-            triggerElement: '#white-section-1',
-            offset: -headerHeight,
-            triggerHook: 0,
-            duration: $('#white-section-1').outerHeight(true)
-        })
-            .setClassToggle('#menu-icon', 'blue')
-            // .addIndicators()
-            .addTo(controller);
-
-        // Services //
-        new ScrollMagic.Scene({
-            triggerElement: '#white-section-2',
-            offset: -headerHeight,
-            triggerHook: 0,
-            duration: $('#white-section-2').outerHeight(true)
-        })
-            .setClassToggle('#logo', 'blue')
-            // .addIndicators()
-            .addTo(controller);
-
-        new ScrollMagic.Scene({
-            triggerElement: '#white-section-2',
-            offset: -headerHeight,
-            triggerHook: 0,
-            duration: $('#white-section-2').outerHeight(true)
-        })
-            .setClassToggle('#menu-icon', 'blue')
-            // .addIndicators()
-            .addTo(controller);
-
-        // Contact Us //
-        new ScrollMagic.Scene({
-            triggerElement: '#white-section-3',
-            offset: -headerHeight,
-            triggerHook: 0,
-            duration: $('#white-section-3').outerHeight(true)
-        })
-            .setClassToggle('#logo', 'blue')
-            // .addIndicators()
-            .addTo(controller);
-
-        // Get In Touch //
-        new ScrollMagic.Scene({
-            triggerElement: '#white-section-4',
-            offset: -headerHeight,
-            triggerHook: 0,
-            duration: $('#white-section-4').outerHeight(true)
-        })
-            .setClassToggle('#logo', 'blue')
-            // .addIndicators()
-            .addTo(controller);
-
-        new ScrollMagic.Scene({
-            triggerElement: '#white-section-4',
-            offset: -headerHeight,
-            triggerHook: 0,
-            duration: $('#white-section-4').outerHeight(true)
-        })
-            .setClassToggle('#menu-icon', 'blue')
-            // .addIndicators()
-            .addTo(controller);
-    }
-
+    $(document).scroll(function() {
+        stickyScroll();
+    });
 
     // Trigger Functions //
     $body

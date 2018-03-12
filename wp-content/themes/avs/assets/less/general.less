@@ -42,6 +42,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 16px;
+    min-height: 90px;
     z-index: 99;
 
     .header--left {
@@ -50,36 +51,42 @@ header {
         align-items: center;
         justify-content: space-between;
         width: 100%;
+        position: relative;
     }
 
     .logo {
         display: block;
+        position: absolute;
+        left: 0;
+        top: 50%;
         max-width: 20px;
+        transform: translateY(-50%);
+        transition: none;
         svg {
             display: block;
             width: 100%;
             height: auto;
+        }
+    }
+
+    .logo {
+        svg {
             .logo-mark-path {
                 fill: @white;
-            }
-        }
-
-        &.blue {
-            svg {
-                .logo-mark-path {
-                    fill: @main_colour;
-                }
             }
         }
     }
 
     .menu-trigger {
         display: block;
-        position: relative;
+        position: absolute;
+        right: 0;
+        top: 50%;
         z-index: 9999;
         border: 2px solid @white;
         width: 34px;
         height: 34px;
+        transform: translateY(-50%);
 
         &:before {
             display: none;
@@ -118,17 +125,6 @@ header {
             &:after {
                 bottom: -7px;
                 transition-property: bottom, transform;
-            }
-        }
-
-        &.blue {
-            border: 2px solid @main_colour;
-            span {
-                background: @main_colour;
-                &:before,
-                &:after {
-                    background-color: @main_colour;
-                }
             }
         }
     }
@@ -187,6 +183,7 @@ header {
     }
 
     &.menu-open {
+        z-index: 9999;
         .menu-trigger {
             span {
                 background: none;

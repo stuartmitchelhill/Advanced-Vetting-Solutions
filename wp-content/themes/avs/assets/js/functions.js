@@ -1,3 +1,32 @@
+// Sticky Header //
+function setSticky(){
+    var logoLeft = $('.js-logo-fixed').offset().left;
+    var menuIconLeft = $('.js-menu-icon-fixed').offset().left;
+    $('.js-logo-inverse').each(function(){
+        $(this).css('left', logoLeft);
+    });
+
+    $('.js-menu-icon-inverse').each(function(){
+        $(this).css('left', menuIconLeft);
+    });
+}
+function stickyScroll() {
+    $('.js-logo-inverse').each(function() {
+        $(this).css('top',
+            $('.js-logo-fixed').offset().top -
+            $(this).closest('.block').offset().top
+        );
+    });
+
+    $('.js-menu-icon-inverse').each(function() {
+        $(this).css('top',
+            $('.js-menu-icon-fixed').offset().top -
+            $(this).closest('.block').offset().top
+        );
+    });
+
+};
+
 // Generic Slider //
 function sliderSetup() {
     var $sliderContainer = $('.slider-container');

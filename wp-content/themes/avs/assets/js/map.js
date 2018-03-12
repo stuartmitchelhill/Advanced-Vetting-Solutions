@@ -4,6 +4,8 @@ function initMap() {
         zoom: 12,
         center: center,
         disableDefaultUI: true,
+        zoomControl: true,
+        scrollwheel: false,
         styles: [
             {
                 "featureType": "all",

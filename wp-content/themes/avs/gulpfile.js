@@ -113,10 +113,8 @@ gulp.task('js', ['clean:js'], function () {
 gulp.task('vendor_js', ['clean:js'], function () {
 
     var jsFiles = [
-        "./vendor/chosen/chosen.jquery.js",
-        "./vendor/slick-carousel/slick/slick.js",
-        './vendor/scrollmagic/scrollmagic/minified/ScrollMagic.min.js'
-        // './vendor/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js'
+        './vendor/chosen/chosen.jquery.js',
+        './vendor/slick-carousel/slick/slick.js'
     ];
 
     gulp.src(jsFiles)
@@ -191,7 +189,9 @@ gulp.task('img', function () {
 
 // Vendor-Duplicate - duplicate vendor files and send to dist/js //
 gulp.task('vendor_duplicate', function () {
-    var copiedJSFiles = [];
+    var copiedJSFiles = [
+
+    ];
     return gulp.src(copiedJSFiles)
         .pipe(gulp.dest('./dist/js'))
         .pipe(notify({

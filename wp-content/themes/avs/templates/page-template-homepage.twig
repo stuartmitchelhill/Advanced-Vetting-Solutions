@@ -14,7 +14,9 @@
         </div>
     </div>
 
-    <div id="white-section-1" class="block padded white block--main-content">
+    <div class="block padded white block--main-content">
+        <a class="js-logo-inverse logo-inverse" href="/">{% include 'partials/_logo-mark.twig' %}</a>
+        <a href="javascript:void(0)" class="js-menu-icon-inverse js-menu-trigger menu-trigger-inverse"><span></span></a>
         <div class="wrapper">
             {{ post.content }}
         </div>
@@ -29,7 +31,9 @@
         </section>
     </div>
 
-    <div id="white-section-2" class="block padded white block--services">
+    <div class="block padded white block--services">
+        <a class="js-logo-inverse logo-inverse" href="/">{% include 'partials/_logo-mark.twig' %}</a>
+        <a href="javascript:void(0)" class="js-menu-icon-inverse js-menu-trigger menu-trigger-inverse"><span></span></a>
         <div class="wrapper large">
             {{ post.get_field('services_introduction') }}
             <div class="flex-cols three">
@@ -43,7 +47,8 @@
         </div>
     </div>
 
-    <div id="white-section-3" class="block block--contact-us">
+    <div class="block block--contact-us">
+        <a class="js-logo-inverse logo-inverse" href="/">{% include 'partials/_logo-mark.twig' %}</a>
         <section class="split-section reverse">
             <div class="split-section--left contact-us--map">
                 <div id="map"></div>
@@ -65,7 +70,9 @@
         </section>
     </div>
 
-    <div id="white-section-4" class="block white padded block--get-in-touch">
+    <div class="block white padded block--get-in-touch">
+        <a class="js-logo-inverse logo-inverse" href="/">{% include 'partials/_logo-mark.twig' %}</a>
+        <a href="javascript:void(0)" class="js-menu-icon-inverse js-menu-trigger menu-trigger-inverse"><span></span></a>
         <div class="wrapper">
             {{ post.get_field('get_in_touch_introduction') }}
             <div class="form-container">
