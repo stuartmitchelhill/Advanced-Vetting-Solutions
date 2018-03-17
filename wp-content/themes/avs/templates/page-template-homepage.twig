@@ -25,7 +25,9 @@
     <div class="block block--about-us">
         <section class="split-section">
             <div class="split-section--left about-us--introduction">
-                {{ post.get_field('about_us_introduction') }}
+                <div class="inner">
+                    {{ post.get_field('about_us_introduction') }}
+                </div>
             </div>
             <div class="split-section--right about-us--image" style="background-image: url('{{ Image(post.get_field('about_us_image')).src|resize(800,800) }}')" ></div>
         </section>
@@ -54,18 +56,20 @@
                 <div id="map"></div>
             </div>
             <div class="split-section--right contact-us--info">
-                <h2>Contact Us</h2>
-                <ul>
-                    {% if options.phone_number %}
-                        <li><span class="icon icon-phone"></span> <a href="tel:{{ options.phone_number }}">{{ options.phone_number }}</a></li>
-                    {% endif %}
-                    {% if options.email_address %}
-                        <li><span class="icon icon-mail"></span> <a href="mailto:{{ options.email_address }}">{{ options.email_address }}</a></li>
-                    {% endif %}
-                    {% if options.postal_address %}
-                        <li><span class="icon icon-location"></span> <span>{{ options.postal_address }}</span></li>
-                    {% endif %}
-                </ul>
+                <div class="inner">
+                    <h2>Contact Us</h2>
+                    <ul>
+                        {% if options.phone_number %}
+                            <li><span class="icon icon-phone"></span> <a href="tel:{{ options.phone_number }}">{{ options.phone_number }}</a></li>
+                        {% endif %}
+                        {% if options.email_address %}
+                            <li><span class="icon icon-mail"></span> <a href="mailto:{{ options.email_address }}">{{ options.email_address }}</a></li>
+                        {% endif %}
+                        {% if options.postal_address %}
+                            <li><span class="icon icon-location"></span> <span>{{ options.postal_address }}</span></li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
         </section>
     </div>
