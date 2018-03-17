@@ -124,7 +124,7 @@ function add_style_to_content_editor( $init_array ) {
         array(
             'title' => 'Button',
             'selector' => 'a',
-            'classes' => 'btn-primary',
+            'classes' => 'btn btn-primary',
             'wrapper' => false,
             'exact' => true,
         ),
