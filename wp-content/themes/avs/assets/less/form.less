@@ -100,6 +100,12 @@ form {
             min-height: 120px;
         }
 
+        input[type=submit]{
+            appearance:none;
+            &:extend(.btn);
+            &:extend(.btn-primary);
+        }
+
         .ajax-loader {
             display: block !important;
             position: absolute;
