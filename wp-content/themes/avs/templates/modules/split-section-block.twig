@@ -1,4 +1,9 @@
 <div class="block block--split--section">
+    {#{% if content.reverse %}#}
+        {#<a class="js-logo-inverse logo-inverse" href="/">{% include 'partials/_logo-mark.twig' %}</a>#}
+    {#{% else %}#}
+        {#<a href="javascript:void(0)" class="js-menu-icon-inverse js-menu-trigger menu-trigger-inverse"><span></span></a>#}
+    {#{% endif %}#}
     <section class="split-section {% if content.reverse %}reverse{% endif %}">
         {% if content.reverse %}
             <div class="split-section--left" style="background-image: url('{{ Image(content.split_section_image_left).src|resize(1200,1200) }}')">

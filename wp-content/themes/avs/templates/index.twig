@@ -5,11 +5,14 @@
 {% block content %}
 	<div class="block block--page-banner">
 		<div class="wrapper cms-content">
+            {{ breadcrumbs }}
 			<h1>{{ post.title }}</h1>
 		</div>
 	</div>
 
-	<div class="block padded block--posts-list">
+	<div class="block white padded block--posts-list">
+		<a class="js-logo-inverse logo-inverse" href="/">{% include 'partials/_logo-mark.twig' %}</a>
+		<a href="javascript:void(0)" class="js-menu-icon-inverse js-menu-trigger menu-trigger-inverse"><span></span></a>
 		<div class="wrapper">
 			<div class="posts-list">
 				{% for post in posts %}

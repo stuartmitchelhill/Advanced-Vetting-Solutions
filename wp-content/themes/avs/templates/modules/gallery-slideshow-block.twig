@@ -1,4 +1,8 @@
 <div class="block block--gallery-slideshow {{ content.block_appearance.vertical_spacing }} {{ content.block_appearance.background_colour }} split-{{ content.block_appearance.split_colour }}">
+    {% if content.block_appearance.background_colour == 'white' or content.block_appearance.background_colour == 'grey' %}
+        <a class="js-logo-inverse logo-inverse" href="/">{% include 'partials/_logo-mark.twig' %}</a>
+        <a href="javascript:void(0)" class="js-menu-icon-inverse js-menu-trigger menu-trigger-inverse"><span></span></a>
+    {% endif %}
     <div class="wrapper cms-content {{ content.block_appearance.restricted_width }}">
         {% if content.block_content.title %}
             <h2>{{ content.block_content.title }}</h2>

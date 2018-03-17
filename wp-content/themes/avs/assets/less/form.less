@@ -3,6 +3,7 @@
      Forms
 *****************/
 form {
+    position: relative;
     .form-row {
         display: flex;
         flex-direction: row;
@@ -14,6 +15,8 @@ form {
             width: 100%;
             margin: 0 0 16px;
 
+            br{ display: none;}
+
             &.half {
                 width: 100%; //~"calc(50% - 8px)"
                 margin: 0 0 16px 0; //0 16px 16px 0
@@ -22,6 +25,43 @@ form {
                     margin-right: 0;
                 }
             }
+        }
+
+        .wpcf7-response-output {
+            &.wpcf7-validation-errors {
+                border:none;
+                border-top: 2px solid @form_input_border_error;
+                border-bottom: 2px solid @form_input_border_error;
+                color: @form_input_border_error;
+                font-size: 14px;
+                text-transform: uppercase;
+                width: 100%;
+                text-align:center;
+                margin: 0 0 12px;
+                .defaultFont(700);
+            }
+
+            &.wpcf7-mail-sent-ok {
+                border:none;
+                border-top: 2px solid #0d9671;
+                border-bottom: 2px solid #0d9671;
+                color: #0d9671;
+                font-size: 14px;
+                text-transform: uppercase;
+                width: 100%;
+                text-align:center;
+                margin: 0 0 12px;
+                .defaultFont(700);
+            }
+        }
+
+        .wpcf7-not-valid-tip {
+            display: block;
+            margin-top: 4px;
+            color: @form_input_border_error;
+            font-size: 12px;
+            text-transform: uppercase;
+            .defaultFont(600);
         }
 
         label {
@@ -58,6 +98,20 @@ form {
             min-width: 100%;
             max-width: 100%;
             min-height: 120px;
+        }
+
+        .ajax-loader {
+            display: block !important;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            background-color: rgba(255, 255, 255, 0.5) !important;
+            background-image: url('@{img_dir}loading.svg') !important;
+            background-position: center center;
+            background-repeat: no-repeat;
+            margin: 0 !important;
         }
     }
 }

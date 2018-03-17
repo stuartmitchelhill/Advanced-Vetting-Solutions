@@ -11,7 +11,9 @@
 	</div>
 
 	{% if post.content %}
-		<div class="block padded block--main-post-content">
+		<div class="block white padded block--main-post-content">
+			<a class="js-logo-inverse logo-inverse" href="/">{% include 'partials/_logo-mark.twig' %}</a>
+			<a href="javascript:void(0)" class="js-menu-icon-inverse js-menu-trigger menu-trigger-inverse"><span></span></a>
 			<div class="wrapper cms-content">
 				{{post.content}}
 			</div>

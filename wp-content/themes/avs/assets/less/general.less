@@ -59,18 +59,13 @@ header {
         position: absolute;
         left: 0;
         top: 50%;
-        max-width: 20px;
+        max-width: 60px;
         transform: translateY(-50%);
         transition: none;
         svg {
             display: block;
             width: 100%;
             height: auto;
-        }
-    }
-
-    .logo {
-        svg {
             .logo-mark-path {
                 fill: @white;
             }
@@ -83,8 +78,7 @@ header {
         right: 0;
         top: 50%;
         z-index: 9999;
-        border: 2px solid @white;
-        width: 34px;
+        width: 22px;
         height: 34px;
         transform: translateY(-50%);
 
@@ -94,8 +88,8 @@ header {
 
         span {
             display: block;
-            width: 20px;
-            height: 3px;
+            width: 22px;
+            height: 2px;
             background: @white;
             transition: background 0s .2s;
             position: absolute;
@@ -110,7 +104,7 @@ header {
                 position: absolute;
                 left: 0;
                 width: 100%;
-                height: 3px;
+                height: 2px;
                 background-color: @white;
                 transition-property: transform;
                 transition-duration: 0.2s, 0.2s;
@@ -183,7 +177,7 @@ header {
     }
 
     &.menu-open {
-        z-index: 9999;
+        z-index: 99999;
         .menu-trigger {
             span {
                 background: none;
