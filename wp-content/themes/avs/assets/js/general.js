@@ -33,4 +33,16 @@ $(function () {
         $icon.toggleClass('icon-plus icon-minus');
         $itemExpand.slideToggle();
     });
+
+    var resizeThreshold;
+    $(window).on('resize', function(){
+        if (resizeThreshold) {
+           clearTimeout(resizeThreshold);
+       }
+
+       resizeThreshold = setTimeout(function () {
+           setSticky();
+           stickyScroll();
+       }, 200);
+    });
 });

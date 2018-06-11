@@ -71,7 +71,10 @@ html, body {
     text-decoration: none;
     transition: 0.2s;
     .defaultFont(500);
-    .underline-from-center(@default_a_colour, 1px);
+
+    &:not(.logo){
+        .underline-from-center(@default_a_colour, 1px);
+    }
 
     &:hover {
         text-decoration: none;

@@ -153,6 +153,12 @@
         .block--page-banner {
             padding: 167.5px 0 78px;
         }
+
+        .block--contact-us {
+            .logo-inverse {
+                display: block;
+            }
+        }
     }
 
     .services-list-page {
@@ -278,19 +284,10 @@
         }
 
         &.alternate-desktop-header {
-            padding: 22px 44px 22px 22px;
-            .header--left {
-                justify-content: flex-start;
-                width: auto;
-            }
-
-            .header--right {
-                width: auto;
-            }
-
+            position: absolute;
 
             .logo {
-                max-width: 80px;
+                margin-top: -18px;
             }
 
             .menu-trigger, .menu-trigger-inverse {
@@ -305,7 +302,6 @@
                 top: auto;
                 left: auto;
                 background: transparent;
-                padding: 35px 0;
                 opacity: 1;
                 visibility: visible;
                 z-index: auto;
@@ -333,6 +329,7 @@
                         a {
                             font-size: 16px;
                             padding: 0 0 12px;
+                            margin: 0;
                         }
                     }
                 }
@@ -453,7 +450,7 @@
     // General //
     header {
         &.alternate-desktop-header {
-            padding: 22px 64px 22px 22px;
+            // padding: 22px 64px 22px 22px;
 
             nav.main-navigation {
                 ul {
@@ -511,7 +508,7 @@
     // General //
     header {
         &.alternate-desktop-header {
-            padding: 22px 84px 22px 22px;
+            // padding: 22px 84px 22px 22px;
         }
     }
 
